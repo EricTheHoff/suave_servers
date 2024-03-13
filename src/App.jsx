@@ -41,8 +41,12 @@ function App() {
 
     alert(`Server responded with the following:
     Message: ${request.data.message}
-    Status: ${request.status}
+    Status: ${request.data.statusCode}
     `)
+
+    .catch((error) => {
+      alert('Error has occurred.')
+    })
   }
   const unauthorized = async () => {
     const request = await axios.get('/api/unauthorized');

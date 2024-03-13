@@ -7,7 +7,10 @@ const port = 3000
 app.use(express.json())
 
 app.get('/api/OK', (req, res) => {
-  res.status(200).json({message: 'OK'})
+  res.json({
+    message: 'OK',
+    status: 200
+  })
 })
 app.get('/api/created', (req, res) => {
   res.status(201).json({message: 'Created'})
@@ -19,7 +22,10 @@ app.get('/api/notModified', (req, res) => {
   res.status(304).json({message: 'Not Modified'})
 })
 app.get('/api/badRequest', (req, res) => {
-  res.status(400).json({message: 'Bad Request'})
+  res.json({
+    message: 'Bad Request',
+    statusCode: 400
+  })
 })
 app.get('/api/unauthorized', (req, res) => {
   res.status(401).json({message: 'Unauthorized'})
