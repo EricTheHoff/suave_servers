@@ -1,120 +1,61 @@
 import axios from 'axios';
+import Modal from './components/modal/Modal.jsx';
+import { useState, useEffect } from 'react';
 import './App.css';
+import placeholder from './assets/placeholder.svg'
+import github from './assets/github.svg'
+import linkedin from './assets/linkedin.svg'
+import ericthehoff from './assets/ericthehoff.svg'
+import dark from './assets/dark.svg'
+import light from './assets/light.svg';
 
 function App() {
+  const [darkMode, setDarkMode] = useState(false);
 
-
-  const OK = async () => {
-    const request = await axios.get('/api/OK');
-
-    alert(`Server responded with the following:
-    Message: ${request.data.message}
-    Status: ${request.status}
-    `)
-  }
-  const created = async () => {
-    const request = await axios.get('/api/created');
-
-    alert(`Server responded with the following:
-    Message: ${request.data.message}
-    Status: ${request.status}
-    `)
-  }
-  const noContent = async () => {
-    const request = await axios.get('/api/noContent');
-
-    alert(`Server responded with the following:
-    Message: ${request.data.message}
-    Status: ${request.status}
-    `)
-  }
-  const notModified = async () => {
-    const request = await axios.get('/api/notModified');
-
-    alert(`Server responded with the following:
-    Message: ${request.data.message}
-    Status: ${request.status}
-    `)
-  }
-  const badRequest = async () => {
-    const request = await axios.get('/api/badRequest');
-
-    alert(`Server responded with the following:
-    Message: ${request.data.message}
-    Status: ${request.data.statusCode}
-    `)
-
-    .catch((error) => {
-      alert('Error has occurred.')
-    })
-  }
-  const unauthorized = async () => {
-    const request = await axios.get('/api/unauthorized');
-
-    alert(`Server responded with the following:
-    Message: ${request.data.message}
-    Status: ${request.status}
-    `)
-  }
-  const forbidden = async () => {
-    const request = await axios.get('/api/forbidden');
-
-    alert(`Server responded with the following:
-    Message: ${request.data.message}
-    Status: ${request.status}
-    `)
-  }
-  const notFound = async () => {
-    const request = await axios.get('/api/notFound');
-
-    alert(`Server responded with the following:
-    Message: ${request.data.message}
-    Status: ${request.status}
-    `)
-  }
-  const conflict = async () => {
-    const request = await axios.get('/api/conflict');
-
-    alert(`Server responded with the following:
-    Message: ${request.data.message}
-    Status: ${request.status}
-    `)
-  }
-  const gone = async () => {
-    const request = await axios.get('/api/gone');
-
-    alert(`Server responded with the following:
-    Message: ${request.data.message}
-    Status: ${request.status}
-    `)
-  }
-  const internalServerError = async () => {
-    const request = await axios.get('/api/internalServerError');
-
-    alert(`Server responded with the following:
-    Message: ${request.data.message}
-    Status: ${request.status}
-    `)
-  }
+  useEffect(() => {
+    console.log(darkMode)
+  },[darkMode])
 
   return (
     <>
-      <div>
-        Welcome to my Test Site
-      </div>
+      <div className='home'>
 
-      <div>
-        <button onClick={() => OK()}>200: OK</button>
-        <button onClick={() => created()}>201: Created</button>
-        <button onClick={() => noContent()}>204: No Content</button>
-        <button onClick={() => notModified()}>304: Not Modified</button>
-        <button onClick={() => badRequest()}>400: Bad Request</button>
-        <button onClick={() => unauthorized()}>401: Unauthorized</button>
-        <button onClick={() => forbidden()}>403: Forbidden</button>
-        <button onClick={() => notFound()}>404: Not Found</button>
-        <button onClick={() => conflict()}>409: Conflict</button>
-        <button onClick={() => gone()}>410: Gone</button>
-        <button onClick={() => internalServerError()}>500: Internal Server Error</button>
+        <div className='home__header'>
+          <div className='home__header--image'>
+            <img src={placeholder} alt='placeholder'/>
+          </div>
+          <div className='home__header--titles'>
+            <h1>Welcome, weary developer, to<br/>| Suave Servers |</h1>
+            <h2>Your fancy boilerplate cheat-sheet<br/>for better HTTP status usage in Express!</h2>
+            <h2>Press a button to see some examples</h2>
+          </div>
+        </div>
+
+        <div className='home__buttons'>
+          <div className='home__buttons--top-row'>
+            <button onClick={() => alert(`button clicked`)}>200 OK</button>
+            <button>201 Created</button>
+            <button>204 No Content</button>
+          </div>
+          <div className='home__buttons--middle-row'>
+            <button>304 Not Modified</button>
+            <button>400 Bad Request</button>
+            <button>401 Unauthorized</button>
+          </div>
+          <div className='home__buttons--bottom-row'>
+            <button>403 Forbidden</button>
+            <button>404 Not Found</button>
+            <button>500 Internal<br/>Server Error</button>
+          </div>
+          <div className='home__buttons--icons'>
+            <a href='https://www.github.com/EricTheHoff/suave_servers' target='blank'><img src={github} alt='Github'/></a>
+            <a href='https://www.linkedin.com/in/erichoffman98/' target='blank'><img src={linkedin} alt='LinkedIn'/></a>
+            <a href='https://www.ericthehoff.com' target='blank'><img src={ericthehoff} alt='https://www.ericthehoff.com'/></a>
+            <img onClick={() => {darkMode ? setDarkMode(false) : setDarkMode(true)}} src={darkMode ? light : dark} alt='Dark Mode'/>
+          </div>
+        </div>
+
+
       </div>
     </>
   )

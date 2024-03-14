@@ -1,11 +1,99 @@
-/* #root {
-  max-width: 1280px;
+#root {
+  max-width: 2160px;
+
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
 }
 
-.logo {
+.home {
+  position: relative;
+}
+
+.home__header {
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+
+  padding: 0 2rem 0 2rem;
+}
+
+.home__header--image {
+  /* mix-blend-mode: luminosity; */
+}
+
+
+.home__header--titles {
+  color: var(--color-headers);
+  font-family: var(--font-headers);
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.home__header--titles h1 {
+  font-size: 40px;
+}
+
+.home__header--titles h2 {
+  font-size: 20px;
+
+  margin: 2rem 0 2rem 0;
+}
+
+.home__buttons {
+  /* border: 3px solid green; */
+  position: absolute;
+  top: 18.5rem;
+  width: 100%;
+}
+
+.home__buttons button{
+  width: 20%;
+  height: 10rem;
+  border-radius: 100px;
+  border: 5px solid #3D3A4B;
+  background: #CD8987;
+  font-family: var(--font-buttons);
+  color: #ECDADA;
+  font-size: 30px;
+  cursor: pointer;
+  transition: all .2s ease-in-out;
+}
+
+.home__buttons button:hover {
+  transform: scale(1.05);
+}
+
+.home__buttons--top-row,
+.home__buttons--middle-row,
+.home__buttons--bottom-row {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.home__buttons--middle-row {
+  margin: 1rem 0 1rem 0;
+}
+
+.home__buttons--icons {
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+  mix-blend-mode: luminosity;
+
+  margin: 4rem 0 4rem 0;
+}
+
+.home__buttons--icons img {
+  cursor: pointer;
+  transition: all .2s ease-in-out;
+}
+
+.home__buttons--icons img:hover {
+  transform: scale(.90);
+}
+
+/* .logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
