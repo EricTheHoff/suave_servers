@@ -2,7 +2,8 @@ import axios from 'axios';
 import Modal from './components/modal/Modal.jsx';
 import { useState, useEffect } from 'react';
 import './App.css';
-import placeholder from './assets/placeholder.svg'
+import man from './assets/man.svg'
+import coolMan from './assets/coolMan.svg'
 import github from './assets/github.svg'
 import linkedin from './assets/linkedin.svg'
 import ericthehoff from './assets/ericthehoff.svg'
@@ -13,7 +14,8 @@ function App() {
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
-    console.log(darkMode)
+    // Targeting the root element to change the page's bg color based on darkMode variable.
+    document.documentElement.style.setProperty('--background-color', darkMode ? '#2B322E' : '#ECDADA')
   },[darkMode])
 
   return (
@@ -21,17 +23,17 @@ function App() {
       <div className='home'>
 
         <div className='home__header'>
-          <div className='home__header--image'>
-            <img src={placeholder} alt='placeholder'/>
+          <div className={darkMode ? 'home__header--image image-dark' : 'home__header--image'}>
+            <img src={darkMode ? coolMan : man} alt='Cool Man'/>
           </div>
-          <div className='home__header--titles'>
+          <div className={darkMode ? 'home__header--titles titles-dark' : 'home__header--titles'}>
             <h1>Welcome, weary developer, to<br/>| Suave Servers |</h1>
             <h2>Your fancy boilerplate cheat-sheet<br/>for better HTTP status usage in Express!</h2>
             <h2>Press a button to see some examples</h2>
           </div>
         </div>
 
-        <div className='home__buttons'>
+        <div className={darkMode ? 'home__buttons buttons-dark' : 'home__buttons'}>
           <div className='home__buttons--top-row'>
             <button onClick={() => alert(`button clicked`)}>200 OK</button>
             <button>201 Created</button>

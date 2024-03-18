@@ -17,16 +17,19 @@
   padding: 0 2rem 0 2rem;
 }
 
-.home__header--image {
-  /* mix-blend-mode: luminosity; */
+.image-dark {
+  mix-blend-mode: luminosity;
 }
-
 
 .home__header--titles {
   color: var(--color-headers);
   font-family: var(--font-headers);
   text-align: right;
   text-transform: uppercase;
+}
+
+.titles-dark {
+  color: #C7EFCF
 }
 
 .home__header--titles h1 {
@@ -59,8 +62,15 @@
   transition: all .2s ease-in-out;
 }
 
+.buttons-dark button {
+  border: 5px solid #C7EFCF;
+  background: #8A8D91;
+  color: #2B322E;
+}
+
 .home__buttons button:hover {
   transform: scale(1.05);
+  background-position: 0 -100%;
 }
 
 .home__buttons--top-row,

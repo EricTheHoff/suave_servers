@@ -9,9 +9,12 @@
   --font-buttons: 'Roboto Mono', sans-serif;
   --color-headers: #3D3A4B;
 
+  /* --light-background: #ECDADA;
+  --dark-background: #2B322E; */
+
   /* color-scheme: light dark; */
   /* color: rgba(255, 255, 255, 0.87); */
-  background-color: #ECDADA;
+  background-color: var(--background-color);
 
   /* font-synthesis: none; */
   text-rendering: optimizeLegibility;
