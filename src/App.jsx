@@ -2,8 +2,8 @@ import axios from 'axios';
 import Modal from './components/modal/Modal.jsx';
 import { useState, useEffect } from 'react';
 import './App.css';
-import man from './assets/man.svg'
-import coolMan from './assets/coolMan.svg'
+import man from './assets/man.png'
+import coolMan from './assets/coolMan.png'
 import github from './assets/github.svg'
 import linkedin from './assets/linkedin.svg'
 import ericthehoff from './assets/ericthehoff.svg'
@@ -57,6 +57,8 @@ function App() {
             <img onClick={() => {darkMode ? setDarkMode(false) : setDarkMode(true)}} src={darkMode ? light : dark} alt='Dark Mode'/>
           </div>
         </div>
+
+        {/* <div className='test'></div> */}
 
 
       </div>
