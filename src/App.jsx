@@ -24,7 +24,8 @@ function App() {
 
         <div className='home__header'>
           <div className={darkMode ? 'home__header--image image-dark' : 'home__header--image'}>
-            <img src={darkMode ? coolMan : man} alt='Cool Man'/>
+            <img className={darkMode ? 'fade-out' : 'fade-in'} src={man} alt='Cool Man'/>
+            <img className={darkMode ? 'fade-in' : 'fade-out'} src={coolMan} alt='Cool Man'/>
           </div>
           <div className={darkMode ? 'home__header--titles titles-dark' : 'home__header--titles'}>
             <h1>Welcome, weary developer, to<br/>| Suave Servers |</h1>

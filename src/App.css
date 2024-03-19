@@ -1,6 +1,5 @@
 #root {
   max-width: 2160px;
-
   margin: 0 auto;
   padding: 2rem;
 }
@@ -12,9 +11,26 @@
 .home__header {
   display: flex;
   justify-content: center;
-  gap: 5rem;
-
+  gap: 30rem;
   padding: 0 2rem 0 2rem;
+}
+
+.home__header--image {
+  position: relative;
+}
+
+.home__header--image img {
+  position: absolute;
+  left: -6rem;
+  transition: opacity .2s ease-in-out;
+}
+
+.fade-in {
+  opacity: 1;
+}
+
+.fade-out {
+  opacity: 0;
 }
 
 .image-dark {
@@ -38,12 +54,14 @@
 
 .home__header--titles h2 {
   font-size: 20px;
-
   margin: 2rem 0 2rem 0;
 }
 
+.home__header--titles h1, h2 {
+  transition: all .2s ease-in-out;
+}
+
 .home__buttons {
-  /* border: 3px solid green; */
   position: absolute;
   top: 18.5rem;
   width: 100%;
@@ -70,7 +88,6 @@
 
 .home__buttons button:hover {
   transform: scale(1.05);
-  background-position: 0 -100%;
 }
 
 .home__buttons--top-row,
@@ -90,7 +107,6 @@
   justify-content: center;
   gap: 5rem;
   mix-blend-mode: luminosity;
-
   margin: 4rem 0 4rem 0;
 }
 
@@ -102,39 +118,3 @@
 .home__buttons--icons img:hover {
   transform: scale(.90);
 }
-
-/* .logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-} */
