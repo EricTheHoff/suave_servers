@@ -4,6 +4,7 @@
   padding: 2rem;
 }
 
+/* Positioning relatively since .home__buttons needs to be positioned absolutely. */
 .home {
   position: relative;
 }
@@ -11,6 +12,7 @@
 .home__header {
   display: flex;
   justify-content: center;
+  /* Using a large gap instead of space-between since content still needs to be centered. */
   gap: 30rem;
   padding: 0 2rem 0 2rem;
 }
@@ -19,20 +21,24 @@
   position: relative;
 }
 
+/* Using absolute positioning to keep image aligned with .home__buttons' left side. */
 .home__header--image img {
   position: absolute;
   left: -6rem;
   transition: opacity .2s ease-in-out;
 }
 
+/* Full opacity for .home__header--image img. Used during transition for light/dark mode.*/
 .fade-in {
   opacity: 1;
 }
 
+/* Hiding .home__header--image img. Used during transition for light/dark mode.*/
 .fade-out {
   opacity: 0;
 }
 
+/* Default styling for title/welcome message. */
 .home__header--titles {
   color: var(--color-headers);
   font-family: var(--font-headers);
@@ -40,44 +46,54 @@
   text-transform: uppercase;
 }
 
+/* Dark mode color for title/welcome message. */
 .titles-dark {
   color: #C7EFCF
 }
 
+/* Main title font size. */
 .home__header--titles h1 {
   font-size: 40px;
 }
 
+/* Subtitle font size. */
 .home__header--titles h2 {
   font-size: 20px;
   margin: 2rem 0 2rem 0;
 }
 
+/* Transition effect to smoothly change title/welcome message color for dark/light mode. */
 .home__header--titles h1, h2 {
-  transition: all .2s ease-in-out;
+  transition: color .2s ease-in-out;
 }
 
+/* Using absolute positioning to overlay .home__header--image element to hide image cutoff. */
 .home__buttons {
   position: absolute;
   top: 18.5rem;
   width: 100%;
 }
 
+/* Button styles for light mode (default). */
 .home__buttons button{
   width: 20%;
   height: 10rem;
   border-radius: 100px;
   border: 5px solid #3D3A4B;
+  /* Using a gradient for the background which splits colors halfway through. */
   background: linear-gradient(to left, #CD8987 50%, #618985 50%);
+  /* Using background-size to set the width of the gradient to be 200% of 100% the button element's width. */
   background-size: 200% 100%;
+  /* Defaulting the position of the gradient to be the right bottom, which would default to the color #CD8987. */
   background-position: right bottom;
   font-family: var(--font-buttons);
-  color: #ECDADA;
   font-size: 30px;
+  color: #ECDADA;
   cursor: pointer;
   transition: all .5s ease-in-out;
 }
 
+/* Button styles for dark mode. */
 .buttons-dark button {
   border: 5px solid #C7EFCF;
   background: linear-gradient(to left, #8A8D91 50%, #C5746C 50%);
@@ -86,11 +102,13 @@
   color: #2B322E;
 }
 
+/* Hover effects for buttons. Should only apply to hoverable devices. */
 .home__buttons button:hover {
   transform: scale(1.05);
   background-position: left bottom;
 }
 
+/* Setting each row as a flex container to center it's buttons with a 1rem gap. */
 .home__buttons--top-row,
 .home__buttons--middle-row,
 .home__buttons--bottom-row {
@@ -99,6 +117,7 @@
   gap: 1rem;
 }
 
+/* Adding a top/bottom margin that matches the gap size so all gaps/spacing in the grid are equal. */
 .home__buttons--middle-row {
   margin: 1rem 0 1rem 0;
 }
@@ -107,34 +126,53 @@
   display: flex;
   justify-content: center;
   gap: 5rem;
+  /* Blending with luminosity so the natural icon colors don't clash with the color scheme of the page. */
   mix-blend-mode: luminosity;
-  margin: 4rem 12rem 4rem 0;
-
-  position: relative;
+  margin: 4rem 0 4rem 0;
 }
 
+/* Transition effect to slightly shrink the icons on hover. */
 .home__buttons--icons img {
   cursor: pointer;
-  transition: all .2s ease-in-out;
+  transition: transform .2s ease-in-out;
 }
 
+/* Hover effects for icons. Should only happen on hoverable devices. */
 .home__buttons--icons img:hover {
   transform: scale(.90);
 }
 
-.test {
-  border: 3px solid green;
-  min-width: 100%;
-  min-height: 300px;
+/* Modal container for when a button is clicked. Using flex to make centering easy. */
+.test-container {
+  width: 100%;
   position: relative;
-  top: 50rem;
-  margin: 5rem 0 5rem 0;
-  background: linear-gradient(to right, lightblue 50%, lightcoral 50%);
-  background-size: 200% 100%;
-  background-position: right bottom;
-  transition: all .2s ease-in-out;
+  display: flex;
+  justify-content: center;
+  /* Giving a higher index value to ensure that the elements contents appear over the rest of the page. */
+  z-index: 1;
 }
 
-.test:hover {
-  background-position: left bottom;
+/* This represents the modal that the user sees when it appears. */
+.test {
+  border: 3px solid green;
+  position: absolute;
+  top: -4rem;
+  width: 80%;
+  height: 38rem;
+  background: #ECDA61;
+}
+
+/* Animation class for having the modal slide down from the top of the screen. Exact values were obtained from animista.net */
+.slide-bottom {
+  animation: slide-bottom 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+/* Keyframes for slide-bottom animation. */
+@keyframes slide-bottom {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
 }

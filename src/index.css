@@ -1,22 +1,16 @@
+/* Page font - Montserrat */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+/* Button/Modal font - Roboto Mono */
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 
+/* Global app variables and styles. */
 :root {
-  /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; */
-  /* line-height: 1.5; */
-  /* font-weight: 400; */
   --font-headers: 'Montserrat', sans-serif;
   --font-buttons: 'Roboto Mono', sans-serif;
   --color-headers: #3D3A4B;
-
-  /* --light-background: #ECDADA;
-  --dark-background: #2B322E; */
-
-  /* color-scheme: light dark; */
-  /* color: rgba(255, 255, 255, 0.87); */
   background-color: var(--background-color);
 
-  /* font-synthesis: none; */
+  font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

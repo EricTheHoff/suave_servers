@@ -2,6 +2,7 @@ import axios from 'axios';
 import Modal from './components/modal/Modal.jsx';
 import { useState, useEffect } from 'react';
 import './App.css';
+// Need to find cleaner way to import assets here.
 import man from './assets/man.png'
 import coolMan from './assets/coolMan.png'
 import github from './assets/github.svg'
@@ -11,7 +12,10 @@ import dark from './assets/dark.svg'
 import light from './assets/light.svg';
 
 function App() {
+  // Tracks whether or not to show dark mode color scheme.
   const [darkMode, setDarkMode] = useState(false);
+  // Tracks whether or not to show info modal.
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     // Targeting the root element to change the page's bg color based on darkMode variable.
@@ -20,13 +24,18 @@ function App() {
 
   return (
     <>
+      {/* Container for home page. This is an SPA, so it's really the only page. */}
       <div className='home'>
 
+        {/* Container for header section, which includes the welcome message and man image. */}
         <div className='home__header'>
+          {/* Container for the image in the header section. */}
           <div className={darkMode ? 'home__header--image image-dark' : 'home__header--image'}>
+            {/* Rendering both images and setting the second's opacity to 0 by default; doing this so image change happens smoothly via CSS transition. */}
             <img className={darkMode ? 'fade-out' : 'fade-in'} src={man} alt='Cool Man'/>
             <img className={darkMode ? 'fade-in' : 'fade-out'} src={coolMan} alt='Cool Man'/>
           </div>
+          {/* Container for the title/welcome message in the header section. */}
           <div className={darkMode ? 'home__header--titles titles-dark' : 'home__header--titles'}>
             <h1>Welcome, weary developer, to<br/>| Suave Servers |</h1>
             <h2>Your fancy boilerplate cheat-sheet<br/>for better HTTP status usage in Express!</h2>
@@ -34,22 +43,27 @@ function App() {
           </div>
         </div>
 
+        {/* Container for the button grid and button icons at the bottom. Might turn buttons into a component. */}
         <div className={darkMode ? 'home__buttons buttons-dark' : 'home__buttons'}>
+          {/* Top 3 buttons. */}
           <div className='home__buttons--top-row'>
-            <button onClick={() => alert(`button clicked`)}>200 OK</button>
+            <button onClick={() => setShowModal(true)}>200 OK</button>
             <button>201 Created</button>
             <button>204 No Content</button>
           </div>
+          {/* Middle 3 buttons. */}
           <div className='home__buttons--middle-row'>
             <button>304 Not Modified</button>
             <button>400 Bad Request</button>
             <button>401 Unauthorized</button>
           </div>
+          {/* Bottom 3 buttons. */}
           <div className='home__buttons--bottom-row'>
             <button>403 Forbidden</button>
             <button>404 Not Found</button>
             <button>500 Internal<br/>Server Error</button>
           </div>
+          {/* Container for the button icons for Github, LinkedIn, Portfolio, and Dark/Light Mode. */}
           <div className='home__buttons--icons'>
             <a href='https://www.github.com/EricTheHoff/suave_servers' target='blank'><img src={github} alt='Github'/></a>
             <a href='https://www.linkedin.com/in/erichoffman98/' target='blank'><img src={linkedin} alt='LinkedIn'/></a>
@@ -58,8 +72,16 @@ function App() {
           </div>
         </div>
 
-        {/* <div className='test'></div> */}
-
+        {/* Rendering this section conditionally based on if showModal is true or false. */}
+        {showModal ? 
+          <div className='test-container'>
+            <div className='test slide-bottom'>
+              <button onClick={() => setShowModal(false)}>Back</button>
+            </div>
+          </div>
+          :
+          <></>
+        }
 
       </div>
     </>
