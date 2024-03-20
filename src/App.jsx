@@ -9,7 +9,9 @@ import github from './assets/github.svg'
 import linkedin from './assets/linkedin.svg'
 import ericthehoff from './assets/ericthehoff.svg'
 import dark from './assets/dark.svg'
-import light from './assets/light.svg';
+import light from './assets/light.svg'
+import exit from './assets/exit.svg'
+import copy from './assets/copy.svg'
 
 function App() {
   // Tracks whether or not to show dark mode color scheme.
@@ -76,7 +78,53 @@ function App() {
         {showModal ? 
           <div className='test-container'>
             <div className='test slide-bottom'>
-              <button onClick={() => setShowModal(false)}>Back</button>
+
+              <div className='modal__header'>
+                <div className='modal__header--titles'>
+                  <div className='modal__header--titles-bar'></div>
+                  <div className='modal__header--titles-text'>
+                    <h1>200 OK</h1>
+                    <h2>Successful Response</h2>
+                  </div>
+                </div>
+                <div className='modal__header--exit'>
+                  <img onClick={() => setShowModal(false)} src={exit} alt='Exit'/>
+                </div>
+              </div>
+
+              <div className='modal__header--content'>
+                <div className='modal__header--content_code'>
+                  <div className='modal__header--content_code-copy'>
+                    <img src={copy} alt='Copy to Clipboard'/>
+                  </div>
+                  <div>
+                    <pre className='code-snippet'>
+                      <code>
+                        {`
+            1  app.get('/api/your-route', (req, res) => {
+            2    // interact with req data here.
+            3    // Send a 200 OK in the res.json object.
+            4    res.json({
+            5      message: 'OK',
+            6      status: 200,
+            7    })
+            8  })
+                         `}
+                      </code>
+                    </pre>
+                    
+                  </div>
+                </div>
+                <div className='modal__header--content_text'>
+                  <p>The 200 OK response indicates that the request succeeded.
+                    The exact meaning of a 200 OK can vary, depending on the
+                    HTTP method used to prompt it.
+                  </p>
+                  <p>To learn more about this status code,
+                    visit MDN's web docs <a href='https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/200' target='blank'>here!</a>
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
           :

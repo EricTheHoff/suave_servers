@@ -154,12 +154,94 @@
 
 /* This represents the modal that the user sees when it appears. */
 .test {
-  border: 3px solid green;
+  border: 10px solid #3D3A4B;
+  border-radius: 10px;
   position: absolute;
   top: -4rem;
   width: 80%;
   height: 38rem;
-  background: #ECDA61;
+  background: #CD8987;
+  padding: 2rem;
+}
+
+.modal__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal__header--titles {
+  display: flex;
+  position: relative;
+}
+
+.modal__header--titles-bar {
+  width: .5rem;
+  height: 7rem;
+  background: #3D3A4B;
+  position: absolute;
+  top: .5rem;
+}
+
+.modal__header--titles-text {
+  font-family: var(--font-buttons);
+  color: #3D3A4B;
+  margin-left: 1.5rem;
+}
+
+.modal__header--titles-text h1 {
+  font-size: 50px;
+  line-height: 5px;
+}
+
+.modal__header--titles-text h2 {
+  font-size: 30px;
+}
+
+.modal__header--exit img {
+  cursor: pointer;
+  transition: transform .2s ease-in-out;
+}
+
+.modal__header--exit img:hover {
+  transform: scale(1.2);
+}
+
+.modal__header--content {
+  display: flex;
+  gap: 2rem;
+  height: 67%;
+}
+
+.modal__header--content_code,
+.modal__header--content_text {
+  flex: 1;
+}
+
+.modal__header--content_code {
+  border-radius: 10px;
+  background: #1F1F1F;
+  height: 100%;
+  padding: 2rem;
+}
+
+.code-snippet {
+  color: white;
+  font-size: 20px;
+  overflow-x: auto;
+}
+
+.code-snippet code {
+  white-space: pre-wrap;
+}
+
+.code-snippet .comment {
+  color: #71F96E;
+}
+
+.modal__header--content_text {
+  font-family: var(--font-buttons);
+  font-size: 25px;
+  color: #3D3A4B;
 }
 
 /* Animation class for having the modal slide down from the top of the screen. Exact values were obtained from animista.net */
