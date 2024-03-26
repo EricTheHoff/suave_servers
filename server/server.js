@@ -6,12 +6,12 @@ const port = 3000
 
 app.use(express.json())
 
-// app.get('/api/OK', (req, res) => {
-//   res.json({
-//     message: 'OK',
-//     status: 200
-//   })
-// })
+app.get('/api/OK', (req, res) => {
+  res.json({
+    message: 'OK',
+    status: 200
+  })
+})
 // app.get('/api/created', (req, res) => {
 //   res.status(201).json({message: 'Created'})
 // })

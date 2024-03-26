@@ -1,5 +1,5 @@
-import axios from 'axios';
-import Modal from './components/modal/Modal.jsx';
+// import axios from 'axios';
+// import Modal from './components/modal/Modal.jsx';
 import { useState, useEffect } from 'react';
 import './App.css';
 // Need to find cleaner way to import assets here.
