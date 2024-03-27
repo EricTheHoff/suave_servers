@@ -34,7 +34,7 @@ function App() {
           {/* Container for the image in the header section. */}
           <div className={darkMode ? 'home__header--image image-dark' : 'home__header--image'}>
             {/* Rendering both images and setting the second's opacity to 0 by default; doing this so image change happens smoothly via CSS transition. */}
-            <img className={darkMode ? 'fade-out' : 'fade-in'} src={man} alt='Cool Man'/>
+            <img className={darkMode ? 'fade-out' : 'fade-in'} src={man} alt='Man'/>
             <img className={darkMode ? 'fade-in' : 'fade-out'} src={coolMan} alt='Cool Man'/>
           </div>
           {/* Container for the title/welcome message in the header section. */}
@@ -46,6 +46,8 @@ function App() {
         </div>
 
         {/* Container for the button grid and button icons at the bottom. Might turn buttons into a component. */}
+        {/* Idea; compile button names into an array, then loop through the array, creating the appropriate divs and buttons. */}
+        {/* On indices 3 and 6, create a new div with 3 buttons each. */}
         <div className={darkMode ? 'home__buttons buttons-dark' : 'home__buttons'}>
           {/* Top 3 buttons. */}
           <div className='home__buttons--top-row'>
@@ -70,7 +72,7 @@ function App() {
             <a href='https://www.github.com/EricTheHoff/suave_servers' target='blank'><img src={github} alt='Github'/></a>
             <a href='https://www.linkedin.com/in/erichoffman98/' target='blank'><img src={linkedin} alt='LinkedIn'/></a>
             <a href='https://www.ericthehoff.com' target='blank'><img src={ericthehoff} alt='https://www.ericthehoff.com'/></a>
-            <img onClick={() => {darkMode ? setDarkMode(false) : setDarkMode(true)}} src={darkMode ? light : dark} alt='Dark Mode'/>
+            <img onClick={() => {darkMode ? setDarkMode(false) : setDarkMode(true)}} src={darkMode ? light : dark} alt={darkMode ? 'Light Mode' : 'Dark Mode'}/>
           </div>
         </div>
 
