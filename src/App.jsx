@@ -1,10 +1,9 @@
 // import axios from 'axios';
-import { useState, useEffect, useRef } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { solarizedlight } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import Header from './components/header/Header.jsx';
 import StatusBtns from './components/statusBtns/StatusBtns.jsx';
+import Modal from './components/modal/Modal.jsx';
 import './App.css';
 
 function App() {
@@ -12,33 +11,6 @@ function App() {
   const [darkMode, setDarkMode] = useState(false);
   // Tracks whether or not to show info modal.
   const [showModal, setShowModal] = useState(false);
-  const imgRef = useRef(null);
-
-  const codeString = `app.get('/api/your-route', (req, res) => {
-    // Interact with your req data here.
-    // Send a 200 OK using the res.json object.
-    res.json({
-      message: OK,
-      status: 200,
-    });
-  });`;
-
-  const codeStyle = {
-    backgroundColor: '#1F1F1F',
-    border: '3px solid #4F4F4F',
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2), 0 8px 16px rgba(0, 0, 0, 0.16)',
-    fontSize: '18px',
-  };
-
-  const copyClick = () => {
-    navigator.clipboard.writeText(codeString).then(() => {
-      imgRef.current.classList.add('scale-up');
-      // toast('Copied to Clipboard!')
-      setTimeout(() => {
-        imgRef.current.classList.remove('scale-up');
-      }, 200);
-    });
-  };
 
   return (
     <>
@@ -50,6 +22,11 @@ function App() {
           setShowModal={setShowModal}
         />
       </div>
+      {showModal ?
+        <Modal setShowModal={setShowModal}/>
+        :
+        <></>
+      }
     </>
 
 

@@ -1,11 +1,17 @@
 import React from 'react';
-import toast, { Toaster } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 import './toast.css';
 
 const Toast = () => {
   return (
     <>
-      <Toaster/>
+      <Toaster
+        position='top-center'
+        toastOptions={{
+          className: 'toast',
+          duration: 2000,
+        }}
+      />
     </>
   );
 };
