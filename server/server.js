@@ -6,12 +6,15 @@ const port = 3000
 
 app.use(express.json())
 
-app.get('/api/OK', (req, res) => {
+app.get('/api/your-route', (req, res) => {
+  // Interact with your req data here.
+  // Send a 200 OK using the res.json object.
   res.json({
-    message: 'OK',
-    status: 200
-  })
-})
+    message: OK,
+    status: 200,
+  });
+});
+
 // app.get('/api/created', (req, res) => {
 //   res.status(201).json({message: 'Created'})
 // })

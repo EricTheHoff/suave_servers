@@ -1,6 +1,9 @@
 // import axios from 'axios';
 // import Modal from './components/modal/Modal.jsx';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { solarizedlight } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import toast, { Toaster } from 'react-hot-toast';
 import './App.css';
 // Need to find cleaner way to import assets here.
 import man from './assets/man.png'
@@ -18,6 +21,33 @@ function App() {
   const [darkMode, setDarkMode] = useState(false);
   // Tracks whether or not to show info modal.
   const [showModal, setShowModal] = useState(false);
+  const imgRef = useRef(null);
+
+  const codeString = `app.get('/api/your-route', (req, res) => {
+    // Interact with your req data here.
+    // Send a 200 OK using the res.json object.
+    res.json({
+      message: OK,
+      status: 200,
+    });
+  });`;
+
+  const codeStyle = {
+    backgroundColor: '#1F1F1F',
+    border: '3px solid #4F4F4F',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2), 0 8px 16px rgba(0, 0, 0, 0.16)',
+    fontSize: '18px',
+  };
+
+  const copyClick = () => {
+    navigator.clipboard.writeText(codeString).then(() => {
+      imgRef.current.classList.add('scale-up');
+      toast('Copied to Clipboard!')
+      setTimeout(() => {
+        imgRef.current.classList.remove('scale-up');
+      }, 200);
+    });
+  };
 
   useEffect(() => {
     // Targeting the root element to change the page's bg color based on darkMode variable.
@@ -96,25 +126,15 @@ function App() {
 
               <div className='modal__header--content'>
                 <div className='modal__header--content_code'>
-                  <div className='modal__header--content_code-copy'>
-                    <img src={copy} alt='Copy to Clipboard'/>
+                  <div className='modal__header--content_code-copy' title='Copy to Clipboard'>
+                    <img ref={imgRef} onClick={copyClick} src={copy} alt='Copy to Clipboard'/>
                   </div>
                   <div>
-                    <pre className='code-snippet'>
-                      <code>
-                        {`
-            1  app.get('/api/your-route', (req, res) => {
-            2    // interact with req data here.
-            3    // Send a 200 OK in the res.json object.
-            4    res.json({
-            5      message: 'OK',
-            6      status: 200,
-            7    })
-            8  })
-                         `}
-                      </code>
-                    </pre>
-                    
+
+                    <SyntaxHighlighter language='javascript' style={solarizedlight} showLineNumbers customStyle={codeStyle}>
+                      {codeString}
+                    </SyntaxHighlighter>
+
                   </div>
                 </div>
                 <div className='modal__header--content_text'>
@@ -134,6 +154,7 @@ function App() {
         }
 
       </div>
+      <Toaster />
     </>
   )
 }

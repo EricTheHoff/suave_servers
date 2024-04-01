@@ -224,18 +224,17 @@
   padding: 2rem;
 }
 
-.code-snippet {
-  color: white;
-  font-size: 20px;
-  overflow-x: auto;
+.modal__header--content_code-copy img {
+  cursor: pointer;
+  transition: transform .2s ease-in-out;
 }
 
-.code-snippet code {
-  white-space: pre-wrap;
+.modal__header--content_code-copy img:hover {
+  transform: scale(1.2);
 }
 
-.code-snippet .comment {
-  color: #71F96E;
+.modal__header--content_code-copy img.scale-up {
+  transform: scale(1.6);
 }
 
 .modal__header--content_text {
