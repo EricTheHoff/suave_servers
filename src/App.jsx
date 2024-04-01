@@ -1,5 +1,4 @@
 // import axios from 'axios';
-// import Modal from './components/modal/Modal.jsx';
 import { useState, useEffect, useRef } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { solarizedlight } from 'react-syntax-highlighter/dist/esm/styles/prism';

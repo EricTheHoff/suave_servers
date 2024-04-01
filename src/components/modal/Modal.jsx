@@ -1,13 +1,10 @@
-import React from 'react'
-import './modal.css'
+import React from 'react';
+import './modal.css';
 
 const Modal = () => {
-  
   return (
-    <div className='flex'>
-      Placeholder
-    </div>
-  )
-}
+    <div>Modal</div>
+  );
+};
 
-export default Modal
+export default Modal;
