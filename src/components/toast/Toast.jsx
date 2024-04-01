@@ -1,6 +1,5 @@
 import React from 'react';
 import { Toaster } from 'react-hot-toast';
-import './toast.css';
 
 const Toast = () => {
   return (
@@ -8,8 +7,12 @@ const Toast = () => {
       <Toaster
         position='top-center'
         toastOptions={{
-          className: 'toast',
           duration: 2000,
+          style: {
+            background: '#1F1F1F',
+            fontFamily: 'var(--font-buttons)',
+            color: '#FFF',
+          },
         }}
       />
     </>

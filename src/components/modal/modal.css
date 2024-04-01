@@ -87,11 +87,13 @@
   height: 67%;
 }
 
+/* Forcing code block and description to take up remaining width in the flex container. */
 .modal__content--code,
 .modal__content--description {
   flex: 1;
 }
 
+/* Styling for code block. */
 .modal__content--code {
   border-radius: 10px;
   background: #1F1F1F;
@@ -104,10 +106,12 @@
   transition: transform .2s ease-in-out;
 }
 
+/* Hover effects for copy-to-clipboard button. Should only apply to hoverable devices. */
 .modal__content--code_copy img:hover {
   transform: scale(1.2);
 }
 
+/* This class is applied for .2s after the image is clicked. */
 .modal__content--code_copy img.scale-up {
   transform: scale(1.6);
 }

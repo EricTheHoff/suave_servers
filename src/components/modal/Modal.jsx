@@ -8,28 +8,22 @@ import exit from '../../assets/exit.svg';
 import copy from '../../assets/copy.svg';
 import './modal.css';
 
-const Modal = ({ setShowModal }) => {
+const Modal = ({ setShowModal, modalData }) => {
   // Creating a null reference for the copy-to-clipboard image
   const copyRef = useRef(null);
-
-  // Placeholder values for modal popup. Will obtain these dynamically through Express.
-  const title = 'Placeholder Title'
-  const subtitle = 'Placeholder Text'
-  const description = 'Placeholder Description'
-  const code = `app.get('/api/your-route', (req, res) => {
-    // Interact with your req data here.
-    // Send a 200 OK using the res.json object.
-    res.json({
-      message: OK,
-      status: 200,
-    });
-  });`;
+  // Modal values, obtained from StatusBtns.jsx via Express, then passed up to App.jsx and back down to Modal.jsx.
+  const title = modalData.title;
+  const subtitle = modalData.subtitle;
+  const code = modalData.code;
+  const description = modalData.description;
+  const mdnLink = modalData.mdnLink;
 
   const clickToCopy = () => {
     // Copies the code string to the OS's clipboard.
     navigator.clipboard.writeText(code).then(() => {
       // Adds a CSS class called 'scale-up' to give feedback when the button is clicked.
       copyRef.current.classList.add('scale-up');
+      // Toast notification after the code snippet has been copied.
       toast('Copied to Clipboard')
       // 'scale-up' is removed after .2s to match transition values in modal.css.
       setTimeout(() => {
@@ -80,7 +74,7 @@ const Modal = ({ setShowModal }) => {
           <div className='modal__content--description'>
             <p>{description}</p>
             <p>To learn more about this status code,
-              visit MDN's web docs here!
+              visit MDN's web docs <a href={mdnLink} target='blank'>here</a>!
             </p>
           </div>
         </div>
