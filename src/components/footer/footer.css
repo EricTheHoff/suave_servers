@@ -1,0 +1,19 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+  /* Blending with luminosity so the natural icon colors don't clash with the color scheme of the page. */
+  mix-blend-mode: luminosity;
+  margin: 4rem 0 4rem 0;
+}
+
+/* Transition effect to slightly shrink the icons on hover. */
+.footer img {
+  cursor: pointer;
+  transition: transform .2s ease-in-out;
+}
+
+/* Hover effects for icons. Should only happen on hoverable devices. */
+.footer img:hover {
+  transform: scale(.90);
+}

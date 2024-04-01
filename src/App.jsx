@@ -6,16 +6,6 @@ import toast, { Toaster } from 'react-hot-toast';
 import Header from './components/header/Header.jsx';
 import StatusBtns from './components/statusBtns/StatusBtns.jsx';
 import './App.css';
-// Need to find cleaner way to import assets here.
-import man from './assets/man.png'
-import coolMan from './assets/coolMan.png'
-import github from './assets/github.svg'
-import linkedin from './assets/linkedin.svg'
-import ericthehoff from './assets/ericthehoff.svg'
-import dark from './assets/dark.svg'
-import light from './assets/light.svg'
-import exit from './assets/exit.svg'
-import copy from './assets/copy.svg'
 
 function App() {
   // Tracks whether or not to show dark mode color scheme.
@@ -43,23 +33,22 @@ function App() {
   const copyClick = () => {
     navigator.clipboard.writeText(codeString).then(() => {
       imgRef.current.classList.add('scale-up');
-      toast('Copied to Clipboard!')
+      // toast('Copied to Clipboard!')
       setTimeout(() => {
         imgRef.current.classList.remove('scale-up');
       }, 200);
     });
   };
 
-  useEffect(() => {
-    // Targeting the root element to change the page's bg color based on darkMode variable.
-    document.documentElement.style.setProperty('--background-color', darkMode ? '#2B322E' : '#ECDADA')
-  },[darkMode])
-
   return (
     <>
       <div className='app'>
         <Header darkMode={darkMode}/>
-        <StatusBtns darkMode={darkMode}/>
+        <StatusBtns
+          darkMode={darkMode}
+          setDarkMode={setDarkMode}
+          setShowModal={setShowModal}
+        />
       </div>
     </>
 

@@ -28,6 +28,8 @@
 .btns-dark button {
   border: 5px solid #C7EFCF;
   background: linear-gradient(to left, #8A8D91 50%, #C5746C 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
   color: #2B322E;
 }
 

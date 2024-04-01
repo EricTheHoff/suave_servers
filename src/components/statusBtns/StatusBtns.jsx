@@ -1,8 +1,9 @@
 import React from 'react';
 import { topRowBtns, midRowBtns, botRowBtns } from '../index.js';
+import Footer from '../footer/Footer.jsx';
 import './statusBtns.css';
 
-const StatusBtns = ({ darkMode }) => {
+const StatusBtns = ({ darkMode, setDarkMode, setShowModal }) => {
   return (
     <div className={ darkMode ? 'status-btns btns-dark' : 'status-btns' }>
 
@@ -10,7 +11,7 @@ const StatusBtns = ({ darkMode }) => {
       <div className='status-btns__top-row'>
         {topRowBtns.map((el, idx) => {
             return (
-              <button key={idx}>{el}</button>
+              <button key={idx} onClick={() => setShowModal(true)}>{el}</button>
             );
         })}
       </div>
@@ -19,7 +20,7 @@ const StatusBtns = ({ darkMode }) => {
       <div className='status-btns__middle-row'>
         {midRowBtns.map((el, idx) => {
             return (
-              <button key={idx}>{el}</button>
+              <button key={idx} onClick={() => setShowModal(true)}>{el}</button>
             );
         })}
       </div>
@@ -28,11 +29,17 @@ const StatusBtns = ({ darkMode }) => {
       <div className='status-btns__bottom-row'>
         {botRowBtns.map((el, idx) => {
             return (
-              <button key={idx}>{el}</button>
+              <button key={idx} onClick={() => setShowModal(true)}>{el}</button>
             );
         })}
       </div>
-      
+
+      {/* Rendering Footer within StatusBtns to keep Footer nested underneath StatusBtn's absolute positioning. */}
+      <Footer
+        darkMode={darkMode}
+        setDarkMode={setDarkMode}
+      />
+
     </div>
   );
 };
