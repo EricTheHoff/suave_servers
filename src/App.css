@@ -5,7 +5,7 @@
 }
 
 /* Positioning relatively since .home__buttons needs to be positioned absolutely. */
-.home {
+.app {
   position: relative;
 }
 

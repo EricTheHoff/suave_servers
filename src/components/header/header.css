@@ -1,0 +1,57 @@
+.header {
+  display: flex;
+  justify-content: center;
+  /* Using a large gap instead of space-between since content still needs to be centered. */
+  gap: 30rem;
+  padding: 0 2rem 0 2rem;
+}
+
+.header__image {
+  position: relative;
+}
+
+/* Using absolute positioning to keep image aligned with buttons on the left-side. */
+.header__image img {
+  position: absolute;
+  left: -6rem;
+  transition: opacity .2s ease-in-out;
+}
+
+/* Full opacity for .header__image img. Used during transition for light/dark mode.*/
+.fade-in {
+  opacity: 1;
+}
+
+/* Hiding .header__image img. Used during transition for light/dark mode.*/
+.fade-out {
+  opacity: 0;
+}
+
+/* Default styling for the title. */
+.header__title {
+  color: var(--color-headers);
+  font-family: var(--font-headers);
+  text-align: right;
+  text-transform: uppercase;
+}
+
+/* Dark mode color for the title. */
+.title-dark {
+  color: #C7EFCF;
+}
+
+/* Main title font size. */
+.header__title h1 {
+  font-size: 40px;
+}
+
+/* Subtitle font size and margins. */
+.header__title h2 {
+  font-size: 20px;
+  margin: 2rem 0 2rem 0;
+}
+
+/* Transition effect to smoothly change the title color for dark/light mode. */
+.header__title h1, h2 {
+  transition: color .2s ease-in-out;
+}
