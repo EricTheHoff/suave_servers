@@ -4,6 +4,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { solarizedlight } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import toast, { Toaster } from 'react-hot-toast';
 import Header from './components/header/Header.jsx';
+import StatusBtns from './components/statusBtns/StatusBtns.jsx';
 import './App.css';
 // Need to find cleaner way to import assets here.
 import man from './assets/man.png'
@@ -58,6 +59,7 @@ function App() {
     <>
       <div className='app'>
         <Header darkMode={darkMode}/>
+        <StatusBtns darkMode={darkMode}/>
       </div>
     </>
 

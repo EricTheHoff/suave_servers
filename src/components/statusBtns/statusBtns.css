@@ -1,0 +1,52 @@
+/* Using absolute positioning to overlay .header__image element to hide image cutoff. */
+.status-btns {
+  position: absolute;
+  top: 18.5rem;
+  width: 100%;
+}
+
+/* Button styles for light mode (default). */
+.status-btns button {
+  width: 20%;
+  height: 10rem;
+  border-radius: 100px;
+  border: 5px solid #3D3A4B;
+  /* Using a gradient for the background which splits colors halfway through. */
+  background: linear-gradient(to left, #CD8987 50%, #618985 50%);
+  /* Using background-size to set the width of the gradient to be 200% of 100% the button element's width. */
+  background-size: 200% 100%;
+  /* Defaulting the position of the gradient to be the right bottom, which would default to the color #CD8987. */
+  background-position: right bottom;
+  font-family: var(--font-buttons);
+  font-size: 30px;
+  color: #ECDADA;
+  cursor: pointer;
+  transition: all .5s ease-in-out;
+}
+
+/* Button styles for dark mode. */
+.btns-dark button {
+  border: 5px solid #C7EFCF;
+  background: linear-gradient(to left, #8A8D91 50%, #C5746C 50%);
+  color: #2B322E;
+}
+
+/* Hover effects for buttons. Should only apply to hoverable devices. */
+.status-btns button:hover {
+  transform: scale(1.05);
+  background-position: left bottom;
+}
+
+/* Setting each row as a flex container to center it's buttons with a 1rem gap. */
+.status-btns__top-row,
+.status-btns__middle-row,
+.status-btns__bottom-row {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* Adding a top/bottom margin that matches the gap size so all gaps/spacing in the grid are equal. */
+.status-btns__middle-row {
+  margin: 1rem 0 1rem 0;
+}
