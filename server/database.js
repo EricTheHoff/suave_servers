@@ -35,7 +35,7 @@ app.get('/api/user', (req, res) => {
 app.post('/api/account', (req, res) => {
   try {
     // Destructure request data.
-    const {firstName,lastName,email,encryptedPassword} = req.body;
+    const { firstName, lastName, email, encryptedPassword } = req.body;
     // Create a new account object.
     const account = {
       firstName,
@@ -77,7 +77,7 @@ app.post('/api/account', (req, res) => {
 app.delete('/api/account/:id', (req, res) => {
   try {
     // Destructure id from the parameters.
-    const {id} = req.params;
+    const { id } = req.params;
     // Verify that the account exists. In this example, we'll use an in-memory array called 'accounts.' In a real-world application, you'd query your database instead.
     const accountIdx = accounts.findIndex((account) => account.id === id);
     // If it exists, delete it and send a 204 using the res.status method.
@@ -106,39 +106,46 @@ app.delete('/api/account/:id', (req, res) => {
     mdnLink: 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/204',
   },
   3: {
-    title: '201 Created',
-    subtitle: 'Successful Response',
-    code: ``,
-    description: 'The 201 Created status indicates that a new resource has been successfully created (such as a user, post, message, etc.). This HTTP method is most commonly used as a response to a POST request.',
-    mdnLink: 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/201',
+    title: '301 Moved Permanently',
+    subtitle: 'Redirection Response',
+    code: `// Example: Sending a 301 after a user navigates to an old, outdated URL.
+app.get('/api/old-path', (req, res) => {
+  // Specify the new, updated URL.
+  const newURL = 'https://example.com/api/new-path';
+
+  // Set the status code to 301 and use the res.redirect method to send them to the new URL.
+  res.redirect(301, newURL);
+});`,
+    description: 'The 301 Moved Permanently status code indicates that the requested resource has been moved to a new location. This is most commonly used when a website has a new URL or domain name. Some websites may also use this to redirect users from HTTP to HTTPS.',
+    mdnLink: 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/301',
   },
   4: {
-    title: '201 Created',
-    subtitle: 'Successful Response',
+    title: '400 Bad Request',
+    subtitle: 'Client Error Response',
     code: ``,
     description: 'The 201 Created status indicates that a new resource has been successfully created (such as a user, post, message, etc.). This HTTP method is most commonly used as a response to a POST request.',
-    mdnLink: 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/201',
+    mdnLink: 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400',
   },
   5: {
-    title: '201 Created',
-    subtitle: 'Successful Response',
+    title: '401 Unauthorized',
+    subtitle: 'Client Error Response',
     code: ``,
     description: 'The 201 Created status indicates that a new resource has been successfully created (such as a user, post, message, etc.). This HTTP method is most commonly used as a response to a POST request.',
-    mdnLink: 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/201',
+    mdnLink: 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401',
   },
   6: {
-    title: '201 Created',
-    subtitle: 'Successful Response',
+    title: '403 Forbidden',
+    subtitle: 'Client Error Response',
     code: ``,
     description: 'The 201 Created status indicates that a new resource has been successfully created (such as a user, post, message, etc.). This HTTP method is most commonly used as a response to a POST request.',
-    mdnLink: 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/201',
+    mdnLink: 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403',
   },
   7: {
-    title: '201 Created',
-    subtitle: 'Successful Response',
+    title: '404 Not Found',
+    subtitle: 'Client Error Response',
     code: ``,
     description: 'The 201 Created status indicates that a new resource has been successfully created (such as a user, post, message, etc.). This HTTP method is most commonly used as a response to a POST request.',
-    mdnLink: 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/201',
+    mdnLink: 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404',
   },
   8: {
     title: '201 Created',

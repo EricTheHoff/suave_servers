@@ -2,7 +2,7 @@ const statusBtns = [
   '200 OK',
   '201 Created',
   '204 No Content',
-  '304 Not Modified',
+  '301 Moved Permanently',
   '400 Bad Request',
   '401 Unauthorized',
   '403 Forbidden',
