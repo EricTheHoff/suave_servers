@@ -22,7 +22,7 @@ const Header = ({ darkMode }) => {
 
       <div className={ darkMode ? 'header__title title-dark' : 'header__title' }>
         <h1>Welcome, weary developer, to<br/>| Suave Servers |</h1>
-        <h2>Your fancy boilerplate cheat-sheet<br/>for better HTTP status usage in Express {'(with Axios)'}!</h2>
+        <h2>Your fancy boilerplate cheat-sheet<br/>for better HTTP status usage in Express!</h2>
         <h2>Press a button to see some examples</h2>
       </div>
       

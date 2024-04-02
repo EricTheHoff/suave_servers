@@ -99,6 +99,7 @@
   background: #1F1F1F;
   height: 100%;
   padding: 2rem;
+  max-width: 50%;
 }
 
 .modal__content--code_copy img {
@@ -114,6 +115,17 @@
 /* This class is applied for .2s after the image is clicked. */
 .modal__content--code_copy img.scale-up {
   transform: scale(1.6);
+}
+
+/* Styling for code snippet. */
+.modal__content--code_snippet {
+  background-color: #1F1F1F;
+  border: 3px solid #4F4F4F;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 8px 16px rgba(0, 0, 0, 0.16);
+  font-size: 16px;
+  max-height: 83%;
+  overflow-y: auto;
 }
 
 .modal__content--description {

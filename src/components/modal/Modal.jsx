@@ -65,6 +65,7 @@ const Modal = ({ setShowModal, modalData }) => {
                 style={solarizedlight}
                 customStyle={codeStyle}
                 showLineNumbers
+                wrapLongLines
               >
                 {code}
               </SyntaxHighlighter>
