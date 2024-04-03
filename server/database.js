@@ -8,20 +8,18 @@ app.get('/api/user', (req, res) => {
   try {
     // Get the user's id from the request parameters.
     const user = req.query.param;
-    // Create a response object to send back (using a database object for clarity, this represents your persistant storage of choice).
-    const response = {
+    // Send back the response with a 200.
+    res.status(200).json({
       message: 'OK',
-      status: 200,
-      user: database[user]
-    };
-    // Send back the response object with the res.json method.
-    res.json(response);
+      user: database[user],
+    });
   } catch (error) {
     console.error(error);
-    // If an error occurs, you can send back your desired HTTP status and error message.
-    res.json({
-      // message: Your preferred error message,
-      // status: Your preferred status code,
+    // If an error occurs, you can send back your desired HTTP status and error message. For this example, we'll send a 500.
+    // In a real-world application, you'd want to be more specific than this.
+    res.status(500).json({
+      error: 'Internal Server Error',
+      message: // Your preferred message.
     });
   }
 });`,
@@ -46,24 +44,22 @@ app.post('/api/account', (req, res) => {
     // Add new account to database. For simplicity, we'll push it into an in-memory array called 'accounts'. In a real-world application, insert into a database instead.
     accounts.push(account)
     // Create a response to send back. Be careful to not send back sensitive data.
-    const response = {
+    res.status(201).json({
       message: 'Account created successfully',
-      status: 201,
       account: {
         id: accounts.length,
         firstName,
         lastName,
         email,
       },
-    };
-    // Send back the response object with the res.json method.
-    res.json(response);
+    });
   } catch (error) {
     console.error(error);
-    // If an error occurs, you can send back your desired HTTP status and error message.
-    res.json({
-      // message: Your preferred error message,
-      // status: Your preferred status code,
+    // If an error occurs, you can send back your desired HTTP status and error message. For this example, we'll send a 500.
+    // In a real-world application, you'd want to be more specific than this.
+    res.status(500).json({
+      error: 'Internal Server Error',
+      message: // Your preferred message.
     });
   }
 });`,
@@ -80,25 +76,23 @@ app.delete('/api/account/:id', (req, res) => {
     const { id } = req.params;
     // Verify that the account exists. In this example, we'll use an in-memory array called 'accounts.' In a real-world application, you'd query your database instead.
     const accountIdx = accounts.findIndex((account) => account.id === id);
-    // If it exists, delete it and send a 204 using the res.status method.
-    // You can use res.json, but it would defeat the purpose of using 204 No Content.
+    // If it exists, delete it and send a 204.
     if (accountIdx !== -1) {
       accounts.splice(accountIdx, 1);
       res.status(204).send()
     } else {
       // If the account doesn't exist before it was deleted, an error should be sent back, like 404 Not Found.
-      const response = {
-        message: 'Not Found',
-        status: 404,
-      };
-      res.json(response);
+      res.status(404).json({
+        error: 'Not Found',
+        message: 'No matching users found'
+      });
     }
   } catch (error) {
     console.error(error);
-    // If an error occurs, you can send back your desired HTTP status and error message.
-    res.json({
-      // message: Your preferred error message,
-      // status: Your preferred status code,
+    // If an error occurs, you can send back your desired HTTP status and error message. For this example, we'll send a 500.
+    res.status(500).json({
+      error: 'Internal Server Error',
+      message: // Your preferred message.
     });
   }
 });`,
@@ -128,19 +122,16 @@ app.get('/api/data', (req, res) => {
   const id = req.query.id;
   if (!id || isNaN(id)) {
     // Sending back status code 400 if the id doesn't exist or isn't a number.
-    const response = {
-      message: 'Bad Request',
-      status: 400,
-    };
-    res.json(response);
+    res.status(400).json({
+      error: 'Bad Request',
+      message: 'Invalid query parameter. Please check your request and try again.',
+    });
   } else {
-    // If the query parameter exists and is valid, proceed. For this example, we'll send a request response.
-    const response = {
+    // If the query parameter exists and is valid, proceed. For this example, we'll send a success response.
+    res.status(200).json({
       message: 'OK',
-      status: 200,
       data: { id },
-    };
-    res.json(response);
+    });
   }
 });`,
     description: 'The 400 Bad Request status code indicates that the server cannot or will not process a request due to a client error (or something perceived as such). For example, if you have an API that expects certain query parameters and the client sends a request without those parameters, you could send back a 400 Bad Request.',
@@ -149,8 +140,24 @@ app.get('/api/data', (req, res) => {
   5: {
     title: '401 Unauthorized',
     subtitle: 'Client Error Response',
-    code: ``,
-    description: 'The 201 Created status indicates that a new resource has been successfully created (such as a user, post, message, etc.). This HTTP method is most commonly used as a response to a POST request.',
+    code: `// Example: Using a middleware function to check if a user is logged in.
+// This example uses the express-session library to save a user's ID to an Express session when they log in.
+const ensureLoggedIn = (req, res, next) => {
+  if (!req.session.userId) {
+    // When this function fires, it checks to see if an Express session exists with a userId field. If it doesn't, send back a 401.
+    res.status(401).json({
+      error: 'Unauthorized',
+      message: 'Please login before accessing the requested resource.',
+    });
+  } else {
+    // If a session exists with the userId field, then proceed to the next step.
+    next();
+  }
+};
+
+// Use the ensureLoggedIn function within any applicable routes.
+app.put('/api/edit-account', ensureLoggedIn, controllerFunction);`,
+    description: "A straightforward status code, 401 Unauthorized indicates that the server cannot complete a client's request because the client lacks valid authentication credentials. A common use case for this is when a client tries accessing a resource that would require them to login first.",
     mdnLink: 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401',
   },
   6: {
