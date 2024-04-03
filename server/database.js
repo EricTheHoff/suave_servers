@@ -163,8 +163,33 @@ app.put('/api/edit-account', ensureLoggedIn, controllerFunction);`,
   6: {
     title: '403 Forbidden',
     subtitle: 'Client Error Response',
-    code: ``,
-    description: 'The 201 Created status indicates that a new resource has been successfully created (such as a user, post, message, etc.). This HTTP method is most commonly used as a response to a POST request.',
+    code: `// Example: A non-Admin user tries deleting a resource that requires Admin permissions.
+// This example uses the express-session library to save an admin field as truthy or falsey.
+app.delete('/api/delete-item/:itemId', (req, res) => {
+  const { itemId } = req.params;
+  if (!req.session.admin) {
+    // If the admin field is falsey, send a 403.
+    res.status(403).json({
+      error: 'Forbidden',
+      message: "You don't have the proper permissions do this. Please contact an administrator instead.",
+    });
+  } else {
+    // If the admin field is truthy, delete the item and send a success response.
+    // For simplicity's sake, we'll say the itemId corresponds with an element in an array called 'array.'
+    if (itemId > 0 && itemId <= array.length) {
+      // Check if the item exists in the array. If it does, delete it and send a 204.
+      array.splice(itemId - 1, 1);
+      res.status(204).send();
+    } else {
+      // If it doesn't exist in the array, send a 404.
+      res.status(404).json({
+        error: 'Not Found',
+        message" 'Item not found.',
+      });
+    }
+  }
+});`,
+    description: 'The 403 Forbidden status code indicates that the server has received and understood the request, but refuses to complete it. Similar to a 401 Unauthorized, the main difference with a 403 Forbidden is that re-authenticating will not matter.',
     mdnLink: 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403',
   },
   7: {
