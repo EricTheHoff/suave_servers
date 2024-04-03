@@ -122,8 +122,28 @@ app.get('/api/old-path', (req, res) => {
   4: {
     title: '400 Bad Request',
     subtitle: 'Client Error Response',
-    code: ``,
-    description: 'The 201 Created status indicates that a new resource has been successfully created (such as a user, post, message, etc.). This HTTP method is most commonly used as a response to a POST request.',
+    code: `// Example: Sending a 400 if a required query parameter is missing or invalid.
+app.get('/api/data', (req, res) => {
+  // Check if your query parameter exists and is valid. In this example, we'll use an ID.
+  const id = req.query.id;
+  if (!id || isNaN(id)) {
+    // Sending back status code 400 if the id doesn't exist or isn't a number.
+    const response = {
+      message: 'Bad Request',
+      status: 400,
+    };
+    res.json(response);
+  } else {
+    // If the query parameter exists and is valid, proceed. For this example, we'll send a request response.
+    const response = {
+      message: 'OK',
+      status: 200,
+      data: { id },
+    };
+    res.json(response);
+  }
+});`,
+    description: 'The 400 Bad Request status code indicates that the server cannot or will not process a request due to a client error (or something perceived as such). For example, if you have an API that expects certain query parameters and the client sends a request without those parameters, you could send back a 400 Bad Request.',
     mdnLink: 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400',
   },
   5: {
