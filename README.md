@@ -5,7 +5,7 @@ I'm building this SPA for primarily two reasons:
 2. To practice new features that I haven't explored yet, such as light/dark mode toggling, code snippet formatting, and interacting with the navigator.
 
 # To-Do List:
-1. Finish populating *database with status data (in-progress).
+1. Finish populating *database with status data (DONE).
 2. Implement slide-up animation for closing page modal.
 3. Fix Vitest tests after separating App.jsx into components.
 
