@@ -195,16 +195,34 @@ app.delete('/api/delete-item/:itemId', (req, res) => {
   7: {
     title: '404 Not Found',
     subtitle: 'Client Error Response',
-    code: ``,
-    description: 'The 201 Created status indicates that a new resource has been successfully created (such as a user, post, message, etc.). This HTTP method is most commonly used as a response to a POST request.',
+    code: `// Example: A user tries opening a resource that no longer exists.
+    app.get('/api/files', (req, res) => {
+      const fileName = req.query.fileName;
+      // For simplicity's sake, we'll check if the fileName corresponds to an element in an array called 'array.'
+      // In a real-world application, you'd check a database instead.
+      if (!array.includes(fileName)) {
+        // If it's not in the array, send a 404.
+        res.status(404).json({
+          error: 'Not Found',
+          message: 'No file found with that name.',
+        });
+      } else {
+        // If it is found, send back the file.
+        res.status(200).json({
+          message: 'OK',
+          data: // Return a file or whatever else is relevant.
+        });
+      }
+    });`,
+    description: 'The 404 Not Found status code indicates that the server cannot find the requested resource. These commonly occur when clients navigate to resources that are missing, have already been removed, or have been moved somewhere else.',
     mdnLink: 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404',
   },
   8: {
-    title: '201 Created',
-    subtitle: 'Successful Response',
+    title: '500 Internal Server Error',
+    subtitle: 'Server Error Response',
     code: ``,
     description: 'The 201 Created status indicates that a new resource has been successfully created (such as a user, post, message, etc.). This HTTP method is most commonly used as a response to a POST request.',
-    mdnLink: 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/201',
+    mdnLink: 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500',
   },
 }
 
