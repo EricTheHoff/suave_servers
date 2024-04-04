@@ -4,6 +4,7 @@ export const database = {
     title: '200 OK',
     subtitle: 'Successful Response',
     code: `// Example: Sending a 200 OK after succesfully looking up a user.
+
 app.get('/api/user', (req, res) => {
   try {
     // Get the user's id from the request parameters.
@@ -13,6 +14,7 @@ app.get('/api/user', (req, res) => {
       message: 'OK',
       user: database[user],
     });
+
   } catch (error) {
     console.error(error);
     // If an error occurs, you can send back your desired HTTP status and error message. For this example, we'll send a 500.
@@ -22,6 +24,7 @@ app.get('/api/user', (req, res) => {
       message: // Your preferred message.
     });
   }
+
 });`,
     description: 'The 200 OK status indicates that the request succeeded. The exact meaning of a 200 OK can vary, depending on the HTTP method used to prompt it. One of the most common status codes for successful web API interactions, this response is used when a server successfully processes a request.',
     mdnLink: 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/200'
@@ -30,6 +33,7 @@ app.get('/api/user', (req, res) => {
     title: '201 Created',
     subtitle: 'Successful Response',
     code: `// Example: Sending a 201 Created after successfully creating an account.
+
 app.post('/api/account', (req, res) => {
   try {
     // Destructure request data.
@@ -53,6 +57,7 @@ app.post('/api/account', (req, res) => {
         email,
       },
     });
+
   } catch (error) {
     console.error(error);
     // If an error occurs, you can send back your desired HTTP status and error message. For this example, we'll send a 500.
@@ -62,6 +67,7 @@ app.post('/api/account', (req, res) => {
       message: // Your preferred message.
     });
   }
+
 });`,
     description: 'The 201 Created status indicates that a new resource has been successfully created (such as a user, post, message, etc.). This HTTP method is most commonly used as a response to a POST request.',
     mdnLink: 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/201',
@@ -70,6 +76,7 @@ app.post('/api/account', (req, res) => {
     title: '204 No Content',
     subtitle: 'Successful Response',
     code: `// Example: Sending a 204 No Content after deleting an account.
+
 app.delete('/api/account/:id', (req, res) => {
   try {
     // Destructure id from the parameters.
@@ -87,6 +94,7 @@ app.delete('/api/account/:id', (req, res) => {
         message: 'No matching users found'
       });
     }
+
   } catch (error) {
     console.error(error);
     // If an error occurs, you can send back your desired HTTP status and error message. For this example, we'll send a 500.
@@ -95,6 +103,7 @@ app.delete('/api/account/:id', (req, res) => {
       message: // Your preferred message.
     });
   }
+
 });`,
     description: 'Despite having the name "No Content," the 204 No Content status is a success response indicating that a request was successful, and nothing needs to be sent back in the body of the response - hence, "No Content." This is commonly used with DELETE and PUT methods.',
     mdnLink: 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/204',
@@ -103,6 +112,7 @@ app.delete('/api/account/:id', (req, res) => {
     title: '301 Moved Permanently',
     subtitle: 'Redirection Response',
     code: `// Example: Sending a 301 after a user navigates to an old, outdated URL.
+
 app.get('/api/old-path', (req, res) => {
   // Specify the new, updated URL.
   const newURL = 'https://example.com/api/new-path';
@@ -117,6 +127,7 @@ app.get('/api/old-path', (req, res) => {
     title: '400 Bad Request',
     subtitle: 'Client Error Response',
     code: `// Example: Sending a 400 if a required query parameter is missing or invalid.
+
 app.get('/api/data', (req, res) => {
   // Check if your query parameter exists and is valid. In this example, we'll use an ID.
   const id = req.query.id;
@@ -142,6 +153,7 @@ app.get('/api/data', (req, res) => {
     subtitle: 'Client Error Response',
     code: `// Example: Using a middleware function to check if a user is logged in.
 // This example uses the express-session library to save a user's ID to an Express session when they log in.
+
 const ensureLoggedIn = (req, res, next) => {
   if (!req.session.userId) {
     // When this function fires, it checks to see if an Express session exists with a userId field. If it doesn't, send back a 401.
@@ -165,6 +177,7 @@ app.put('/api/edit-account', ensureLoggedIn, controllerFunction);`,
     subtitle: 'Client Error Response',
     code: `// Example: A non-Admin user tries deleting a resource that requires Admin permissions.
 // This example uses the express-session library to save an admin field as truthy or falsey.
+
 app.delete('/api/delete-item/:itemId', (req, res) => {
   const { itemId } = req.params;
   if (!req.session.admin) {
@@ -196,24 +209,25 @@ app.delete('/api/delete-item/:itemId', (req, res) => {
     title: '404 Not Found',
     subtitle: 'Client Error Response',
     code: `// Example: A user tries opening a resource that no longer exists.
-    app.get('/api/files', (req, res) => {
-      const fileName = req.query.fileName;
-      // For simplicity's sake, we'll check if the fileName corresponds to an element in an array called 'array.'
-      // In a real-world application, you'd check a database instead.
-      if (!array.includes(fileName)) {
-        // If it's not in the array, send a 404.
-        res.status(404).json({
-          error: 'Not Found',
-          message: 'No file found with that name.',
-        });
-      } else {
-        // If it is found, send back the file.
-        res.status(200).json({
-          message: 'OK',
-          data: // Return a file or whatever else is relevant.
-        });
-      }
-    });`,
+    
+app.get('/api/files', (req, res) => {
+  const fileName = req.query.fileName;
+  // For simplicity's sake, we'll check if the fileName corresponds to an element in an array called 'array.'
+  // In a real-world application, you'd check a database instead.
+  if (!array.includes(fileName)) {
+    // If it's not in the array, send a 404.
+    res.status(404).json({
+      error: 'Not Found',
+      message: 'No file found with that name.',
+    });
+  } else {
+    // If it is found, send back the file.
+    res.status(200).json({
+      message: 'OK',
+      data: // Return a file or whatever else is relevant.
+    });
+  }
+});`,
     description: 'The 404 Not Found status code indicates that the server cannot find the requested resource. These commonly occur when clients navigate to resources that are missing, have already been removed, or have been moved somewhere else.',
     mdnLink: 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404',
   },
