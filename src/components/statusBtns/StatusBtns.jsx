@@ -51,9 +51,17 @@ const StatusBtns = ({ darkMode, setDarkMode, setShowModal, setModalData }) => {
         {statusBtns.map((el, idx) => {
             // Only rendering the last 3 elements as buttons
             if (idx >= 6) {
-              return (
-                <button key={idx} onClick={() => getModalData(idx)}>{el}</button>
-              );
+              // Rendering buttons normally if they aren't 500 Internal Server Error
+              if (el !== '500 Internal Server Error') {
+                return (
+                  <button key={idx} onClick={() => getModalData(idx)}>{el}</button>
+                );
+              } else {
+                // Adding line break if they are so the button text doesn't go off the button
+                return (
+                  <button key={idx} onClick={() => getModalData(idx)}>500 Internal<br/>Server Error</button>
+                );
+              }
             };
         })}
       </div>

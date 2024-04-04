@@ -7,7 +7,7 @@ const statusBtns = [
   '401 Unauthorized',
   '403 Forbidden',
   '404 Not Found',
-  'And Many More!',
+  '500 Internal Server Error',
 ]
 
 // Making the background for react-syntax-highlighter dark.
