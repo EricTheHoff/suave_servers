@@ -3,12 +3,12 @@ export const database = {
   0: {
     title: '200 OK',
     subtitle: 'Successful Response',
-    code: `// Example: Sending a 200 OK after succesfully looking up a user.
+    code: `// Example: Sending a 200 after succesfully looking up a user.
 
 app.get('/api/user', (req, res) => {
   try {
     // Get the user's id from the request parameters.
-    const user = req.query.param;
+    const user = req.query.id;
     // Send back the response with a 200.
     res.status(200).json({
       message: 'OK',
@@ -32,7 +32,7 @@ app.get('/api/user', (req, res) => {
   1: {
     title: '201 Created',
     subtitle: 'Successful Response',
-    code: `// Example: Sending a 201 Created after successfully creating an account.
+    code: `// Example: Sending a 201 after successfully creating an account.
 
 app.post('/api/account', (req, res) => {
   try {
@@ -75,7 +75,7 @@ app.post('/api/account', (req, res) => {
   2: {
     title: '204 No Content',
     subtitle: 'Successful Response',
-    code: `// Example: Sending a 204 No Content after deleting an account.
+    code: `// Example: Sending a 204 after deleting an account.
 
 app.delete('/api/account/:id', (req, res) => {
   try {
@@ -234,8 +234,37 @@ app.get('/api/files', (req, res) => {
   8: {
     title: '500 Internal Server Error',
     subtitle: 'Server Error Response',
-    code: ``,
-    description: 'The 201 Created status indicates that a new resource has been successfully created (such as a user, post, message, etc.). This HTTP method is most commonly used as a response to a POST request.',
+    code: `// Example: Sending a 500 if an unexpected error occurs when trying to delete an account.
+
+app.delete('/api/account/:id', (req, res) => {
+  try {
+    // Destructure id from the parameters.
+    const { id } = req.params;
+    // Verify that the account exists. In this example, we'll use an in-memory array called 'accounts.' In a real-world application, you'd query your database instead.
+    const accountIdx = accounts.findIndex((account) => account.id === id);
+    // If it exists, delete it and send a 204.
+    if (accountIdx !== -1) {
+      accounts.splice(accountIdx, 1);
+      res.status(204).send()
+    } else {
+      // If the account doesn't exist before it was deleted, an error should be sent back, like 404 Not Found.
+      res.status(404).json({
+        error: 'Not Found',
+        message: 'No matching users found'
+      });
+    }
+
+  } catch (error) {
+    console.error(error);
+    // Sending a 500 if an unexpected error occurs.
+    res.status(500).json({
+      error: 'Internal Server Error',
+      message: 'Something went wrong when trying to delete the account.'
+    });
+  }
+
+});`,
+    description: 'Acting as a last-resort, "catch-all" response, the 500 Internal Server Error status code indicates that the server encountered an unexpected issue which prevents it from completing the request. This status code is most commonly used when no other 5XX server response is appropriate. Server administrators should avoid using this when possible due to its generic nature.',
     mdnLink: 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500',
   },
 }
