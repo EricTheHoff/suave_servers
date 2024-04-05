@@ -1,4 +1,5 @@
-import React from 'react';
+// import React from 'react';
+import PropTypes from 'prop-types';
 import './header.css';
 import man from '../../assets/man.png';
 import coolMan from '../../assets/coolMan.png';
@@ -28,6 +29,11 @@ const Header = ({ darkMode }) => {
       
     </div>
   );
+};
+
+// Defining propTypes for ESLint
+Header.propTypes = {
+  darkMode: PropTypes.bool.isRequired,
 };
 
 export default Header;

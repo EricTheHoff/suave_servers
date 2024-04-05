@@ -1,5 +1,6 @@
-import React from 'react';
+// import React from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import { statusBtns } from '../index.js';
 import Footer from '../footer/Footer.jsx';
 import './statusBtns.css';
@@ -16,7 +17,7 @@ const StatusBtns = ({ darkMode, setDarkMode, setShowModal, setModalData }) => {
       setShowModal(true);
     } catch (error) {
       console.error(`Could not obtain status data. Error: ${error}`);
-    };
+    }
   };
 
   return (
@@ -30,7 +31,7 @@ const StatusBtns = ({ darkMode, setDarkMode, setShowModal, setModalData }) => {
               return (
                 <button key={idx} onClick={() => getModalData(idx)}>{el}</button>
               );
-            };
+            }
         })}
       </div>
 
@@ -42,7 +43,7 @@ const StatusBtns = ({ darkMode, setDarkMode, setShowModal, setModalData }) => {
               return (
                 <button key={idx} onClick={() => getModalData(idx)}>{el}</button>
               );
-            };
+            }
         })}
       </div>
 
@@ -62,7 +63,7 @@ const StatusBtns = ({ darkMode, setDarkMode, setShowModal, setModalData }) => {
                   <button key={idx} onClick={() => getModalData(idx)}>500 Internal<br/>Server Error</button>
                 );
               }
-            };
+            }
         })}
       </div>
 
@@ -74,6 +75,14 @@ const StatusBtns = ({ darkMode, setDarkMode, setShowModal, setModalData }) => {
 
     </div>
   );
+};
+
+// Defining propTypes for ESLint
+StatusBtns.propTypes = {
+  darkMode: PropTypes.bool.isRequired,
+  setDarkMode: PropTypes.func.isRequired,
+  setShowModal: PropTypes.func.isRequired,
+  setModalData: PropTypes.func.isRequired,
 };
 
 export default StatusBtns;

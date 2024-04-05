@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import github from '../../assets/github.svg';
 import linkedin from '../../assets/linkedin.svg';
 import ericthehoff from '../../assets/ericthehoff.svg';
@@ -30,6 +31,12 @@ const Footer = ({ darkMode, setDarkMode }) => {
       />
     </div>
   );
+};
+
+// Defining propTypes for ESLint
+Footer.propTypes = {
+  darkMode: PropTypes.bool.isRequired,
+  setDarkMode: PropTypes.func.isRequired,
 };
 
 export default Footer;
