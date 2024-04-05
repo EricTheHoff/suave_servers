@@ -1,4 +1,3 @@
-// import React from 'react';
 import PropTypes from 'prop-types';
 import './header.css';
 import man from '../../assets/man.png';
